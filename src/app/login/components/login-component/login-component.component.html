@@ -1,0 +1,58 @@
+<div class="op"></div>
+<mat-icon class="avatar"  >perm_identity</mat-icon>
+<form class="card" [formGroup]="mainform">
+
+    <div class="row">
+        <mat-icon class="icone">perm_identity</mat-icon>
+        <input class="input-text" id="userName"   type="text"  placeholder="UserName" formControlName="userName" required [ngClass]="{
+            'is-invalid':
+            mainform.get('userName')?.touched &&
+            !mainform.get('userName')?.valid
+        }">
+        <div class="invalid-feedback">
+            <span class="error" *ngIf="mainform.get('userName')?.errors">
+            votre nom?</span>
+
+        </div>
+        <!-- <mat-error>Ce champ est requis</mat-error> -->
+              
+    </div>
+    <div class="row">
+        <mat-icon class="icone">lock</mat-icon>
+        <input  class="input-text"  id="passeWord"   type="password"  placeholder="......" formControlName="passeWord" 
+        minlength="8"   [ngClass]="{
+            'is-invalid':
+            mainform.get('passeWord')?.touched &&
+            !mainform.get('passeWord')?.valid
+
+        }">
+        <div class="invalid-feedback">
+            <span class="error" *ngIf="mainform.get('passeWord')?.errors?.['required']">
+            le mots de passe?</span>
+            <span class="error" *ngIf="mainform.get('passeWord')?.errors?.['minlength']">
+             08 caracteres!!!</span>
+            <span class="error" *ngIf="mainform.get('passeWord')?.errors?.['pattern']">
+            </span>
+
+        </div>
+        <!-- <mat-error>Ce champ est requis</mat-error> -->
+            
+    </div>
+    <div class="row">
+        <button type="submit" (click)="onSubmit()" [disabled]="mainform.invalid">LOGIN</button>
+        <span class="error" *ngIf="mainform.get('passeWord')?.errors?.['pattern']">
+         formulaire invalid</span>
+    </div>
+    <div class="conteneur">
+        <div class="line">
+            <mat-checkbox class="checkbox"> <span>Remember me</span> </mat-checkbox>
+        <h3> Forgot your password?</h3>
+
+        </div>
+
+    </div>
+     
+</form>
+<div class="one"></div>
+<div class="two"></div>
+    
